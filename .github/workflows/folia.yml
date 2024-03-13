@@ -1,0 +1,26 @@
+name: Build Folia
+on:
+  # Triggers the workflow on push or pull request events
+  # Schedule to run every midnight
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '0 0 * * *'
+
+  workflow_dispatch:
+
+# Workflow job
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 'Build Folia .jar'
+        run: |
+          sh build.sh
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Folia
+          path: Folia/build/libs/*.jar
