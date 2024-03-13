@@ -23,4 +23,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: Folia
-          path: Folia/build/libs/*.jar
+          path: Folia/build/libs/folia-paperclip-*.jar
